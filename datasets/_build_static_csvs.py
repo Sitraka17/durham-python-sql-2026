@@ -82,6 +82,7 @@ FRED_SERIES = {           # column name : FRED series id (native frequency)
     "hy_spread":    "BAMLH0A0HYM2",    # D
     "mortgage_30y": "MORTGAGE30US",    # W
     "fed_assets":   "WALCL",           # W
+    "recession":    "USREC",           # M, NBER recession indicator (0/1) — ML target
 }
 LOW_FREQ_FFILL = {"m2_velocity"}      # quarterly -> forward fill across months
 
@@ -146,7 +147,7 @@ def _reconstruct_credit_spreads(df: pd.DataFrame) -> None:
 
 
 def build_fred() -> None:
-    log.info("FRED: downloading 15 series (key-less)...")
+    log.info(f"FRED: downloading {len(FRED_SERIES)} series (key-less)...")
     cols = {}
     for name, sid in FRED_SERIES.items():
         s = _fred_csv(sid)
@@ -177,6 +178,10 @@ def build_fred() -> None:
         + 0.5 * df["output_gap_proxy"]
     ).round(3)
     df["taylor_gap"] = (df["taylor_rule"] - df["fed_funds"]).round(3)
+
+    # NBER recession label (0/1). The newest month may not be classified yet —
+    # fill it with 0 (no recession declared) so the column is a clean integer.
+    df["recession"] = df["recession"].fillna(0).astype(int)
 
     df = df.reset_index().rename(columns={"index": "date"})
     df = df.rename(columns={df.columns[0]: "date"})

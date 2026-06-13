@@ -61,6 +61,8 @@ CREATE TABLE IF NOT EXISTS fred_rates (
     mortgage_30y     REAL,  -- 30-year fixed mortgage rate, %
     -- Fed balance sheet
     fed_assets       REAL,  -- Fed total assets, millions USD
+    -- Machine-learning target
+    recession        INTEGER, -- NBER recession indicator (1=recession), USREC
     -- Derived series (computed by fetch_fred.py)
     cpi_yoy          REAL,  -- 12-month CPI inflation rate, %
     real_rate        REAL,  -- Fisher real FFR = fed_funds - cpi_yoy, %

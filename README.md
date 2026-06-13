@@ -112,6 +112,12 @@ durham-python-sql-2026/
 │   ├── track_b/analysis.py           International spillovers + dollar-dominance index
 │   └── track_c/analysis.py           Yield-curve episodes + recession prediction
 │
+├── ml/                               Block 7 — machine learning (local, CPU)
+│   ├── recession_prediction.py       Logistic regression: yield curve → recession
+│   ├── taylor_rule_regression.py     Learn the Fed's reaction function (OLS)
+│   └── country_clustering.py         k-means + PCA macro regimes
+│
+├── docs/getting_economic_data.md     Tutorial: pulling FRED/World Bank/OECD data
 ├── solutions/                        Model answers (added after the course)
 ├── db/                               Generated SQLite database (git-ignored)
 ├── outputs/                          Generated charts and CSVs (git-ignored)
@@ -138,6 +144,31 @@ durham-python-sql-2026/
 
 Practice as you go: `exercises/day1_sql.sql` (Day 1) and `exercises/day2_python.py`
 (Day 2). Run `python scripts/concepts.py` for runnable demos of every key concept.
+
+---
+
+## Block 7 (extension) — Machine Learning, locally
+
+An optional final block applying ML to the same data — **entirely on your
+laptop/Codespace: scikit-learn, CPU only, no GPU, no cloud, no internet.** Each
+script trains in under a second on the bundled `macro.db`.
+
+```bash
+python ml/recession_prediction.py     # -> outputs/ml_recession_probability.png
+python ml/taylor_rule_regression.py    # -> outputs/ml_reaction_function.png
+python ml/country_clustering.py        # -> outputs/ml_country_clusters.png
+```
+
+| Script | ML technique | Economic question |
+|--------|--------------|-------------------|
+| `recession_prediction.py` | Logistic regression (supervised classification) | Can the yield curve predict recessions? *(It would have screamed in 2022–24 — yet none came.)* |
+| `taylor_rule_regression.py` | Linear regression (supervised) | What is the Fed's *actual* reaction function, and when was it "behind the curve"? |
+| `country_clustering.py` | k-means + PCA (unsupervised) | Which countries form natural macro "regimes"? |
+
+The ML target is the NBER recession indicator (`recession` column in
+`fred_rates`, from FRED's `USREC`). These scripts deliberately show ML's limits
+as well as its power — the recession model's confidence in 2022–24 is the
+perfect springboard for "why did the soft landing happen?".
 
 ---
 

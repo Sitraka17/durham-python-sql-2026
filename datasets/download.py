@@ -109,6 +109,7 @@ FRED_SERIES = {
     "hy_spread":    "BAMLH0A0HYM2",
     "mortgage_30y": "MORTGAGE30US",
     "fed_assets":   "WALCL",
+    "recession":    "USREC",          # NBER recession indicator (0/1), ML target
 }
 
 

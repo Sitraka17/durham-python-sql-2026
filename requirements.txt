@@ -13,6 +13,10 @@ seaborn==0.13.2
 # Database
 sqlalchemy==2.0.30
 
+# Machine learning (runs locally on CPU — no GPU/cloud needed)
+scikit-learn==1.9.0
+scipy==1.17.1
+
 # Economic data APIs
 fredapi==0.5.1
 wbdata==0.3.0
