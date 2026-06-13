@@ -203,6 +203,27 @@ springboard for the course's central question.
 
 ---
 
+## 🎓 Beyond the course — research, data & careers
+
+Three guides to take what you've built further and turn it into a career asset:
+
+- **📊 [Data sources directory](docs/data_sources.md)** — a mapped catalogue of
+  where to get real economic & financial data, with direct links: FRED, World
+  Bank, IMF, OECD, BIS, Eurostat, the ONS, market data, long-run history, and
+  aggregators like DBnomics.
+- **📝 [Writing scientific papers](docs/writing_scientific_papers.md)** — how to
+  structure an empirical economics paper, write it in LaTeX, and use
+  **[latexci.com](https://latexci.com/)** to auto-build citations from a
+  DOI/arXiv ID and turn your `outputs/*.csv` straight into LaTeX tables.
+- **🚀 [Careers & building your portfolio](docs/careers_and_portfolio.md)** — the
+  public & private institutions that hire Durham economics/finance graduates
+  (central banks, IMF/World Bank/OECD/BIS, investment banks, asset managers,
+  hedge funds, economic consultancies, think tanks, data firms) **with links**,
+  plus a step-by-step to **host your own portfolio on GitHub Pages** and turn
+  this very course into your first portfolio piece.
+
+---
+
 <details>
 <summary><h2>📚 Reference (click to expand) — for the curious and for instructors</h2></summary>
 
@@ -271,7 +292,9 @@ peak 5.33%, CPI YoY peak ~9%, the 2022–24 yield-curve inversion).
 > Both inputs are real FRED series; the historical tail is a real-spread
 > reconstruction, reproducing the GFC, COVID and 2022 stress episodes.
 
-**Want live data?** See **[docs/getting_economic_data.md](docs/getting_economic_data.md)**.
+**Want live data?** See **[docs/getting_economic_data.md](docs/getting_economic_data.md)**
+(the how-to) and the **[full data-sources directory](docs/data_sources.md)**
+(where to find everything else, with links).
 
 ### Key financial indicators derived in code
 
