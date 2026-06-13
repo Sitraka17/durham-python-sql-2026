@@ -50,3 +50,8 @@ desktop.ini
 
 # Instructor-only materials (kept in private fork only)
 instructor/
+
+# Instructor-only model answers — generated locally, NOT published until after
+# the course. Delete this block (or use a private fork) to distribute them.
+solutions/*
+!solutions/.gitkeep

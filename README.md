@@ -165,6 +165,10 @@ the verified facts of the cycle (Fed funds peak 5.33%, CPI YoY peak ~9%, the
 > real-spread reconstruction, not synthetic noise, and reproduces the GFC, COVID
 > and 2022 stress episodes.
 
+**Want live data?** See **[docs/getting_economic_data.md](docs/getting_economic_data.md)** —
+a step-by-step tutorial on pulling FRED, World Bank and OECD data in Python
+(key-less and keyed), the series IDs used here, and how to refresh the bundles.
+
 ---
 
 ## Key financial indicators derived in code

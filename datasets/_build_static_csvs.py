@@ -164,6 +164,7 @@ def build_fred() -> None:
     df["cpi_yoy"]         = df["cpi_index"].pct_change(12, fill_method=None).mul(100).round(3)
     df["real_rate"]       = (df["fed_funds"] - df["cpi_yoy"]).round(3)
     df["spread_10_2"]     = (df["rate_10y"] - df["rate_2y"]).round(3)
+    df["spread_30_2"]     = (df["rate_30y"] - df["rate_2y"]).round(3)
     df["inverted"]        = (df["spread_10_2"] < 0).astype(int)
     df["mortgage_spread"] = (df["mortgage_30y"] - df["rate_10y"]).round(3)
     df["m2_yoy"]          = df["m2"].pct_change(12, fill_method=None).mul(100).round(2)
@@ -182,7 +183,7 @@ def build_fred() -> None:
     df["date"] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%d")
 
     order = (["date"] + list(FRED_SERIES.keys())
-             + ["cpi_yoy", "real_rate", "spread_10_2", "inverted",
+             + ["cpi_yoy", "real_rate", "spread_10_2", "spread_30_2", "inverted",
                 "mortgage_spread", "m2_yoy", "output_gap_proxy",
                 "taylor_rule", "taylor_gap"])
     df = df[order]

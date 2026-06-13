@@ -322,8 +322,8 @@ def exercise4_taylor_sensitivity(df: pd.DataFrame) -> pd.DataFrame:
 
     # For each r* value, compute the Taylor Rule and gap
     for label, rstar in R_STARS.items():
-        col_tr  = f"taylor_{label[:3].strip()}"
-        col_gap = f"gap_{label[:3].strip()}"
+        col_tr  = f"taylor_r{rstar}"
+        col_gap = f"gap_r{rstar}"
         # HINT: taylor_rule = cpi_yoy + rstar + 0.5*(cpi_yoy - PI_STAR) + 0.5*output_gap
         # HINT: gap = taylor_rule - fed_funds
         df_s[col_tr]  = None   # YOUR CODE
@@ -336,8 +336,8 @@ def exercise4_taylor_sensitivity(df: pd.DataFrame) -> pd.DataFrame:
     fig, ax = plt.subplots(figsize=(12, 6))
     ax.axhline(0, color="gray", lw=0.6, ls="--")
     colours = [NAVY, GOLD, RED]
-    for (label, _), colour in zip(R_STARS.items(), colours):
-        col_gap = f"gap_{label[:3].strip()}"
+    for (label, rstar), colour in zip(R_STARS.items(), colours):
+        col_gap = f"gap_r{rstar}"
         if col_gap in plot_df.columns and plot_df[col_gap].notna().any():
             ax.plot(plot_df["date"], plot_df[col_gap],
                     color=colour, lw=1.5, label=label)
