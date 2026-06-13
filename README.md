@@ -3,206 +3,272 @@
 **Durham University Business School — MSc Economics**
 Sitraka Forler · 15–16 June 2026
 
----
-
-## The central question
-
-> *"Did the Fed's tightening cycle work?"*
->
-> In March 2022 the Fed began the most aggressive rate hike cycle since 1979.
-> 11 hikes, 525 basis points, 16 months.
-> By the end of Day 2 you will have built the data infrastructure to answer this
-> empirically — and defend your answer.
+> ### The big question we answer this week
+> **"Did the Fed's tightening cycle work?"**
+> In March 2022 the US Federal Reserve began the most aggressive interest-rate
+> hikes since 1979 — 525 basis points in 16 months. Over two days you'll use
+> real economic data to investigate whether it worked, and learn Python and SQL
+> by doing it.
 
 ---
 
-## Get started in 30 seconds — GitHub Codespaces (recommended)
+## 🚀 Start here — no installation, no experience needed
 
-No install, runs in your browser. Click:
+**You do not need to be technical. You do not need to install anything.** The
+whole course runs on a free cloud computer that opens **inside your web browser**
+(Chrome, Edge, Firefox or Safari). Just follow these steps in order.
 
-**→ https://codespaces.new/Sitraka17/durham-python-sql-2026**
+> ⏱️ Total time to get going: about **5 minutes**, most of it waiting.
 
-The container automatically installs dependencies, downloads the bundled data
-(`--no-api`, no key needed) and builds `db/macro.db`. When the terminal is
-ready, verify with:
+### Step 1 — Get a free GitHub account *(skip if you already have one)*
+
+1. Go to **https://github.com/signup**
+2. Enter an email, password and username. Use your Durham email if you like.
+3. Confirm the email GitHub sends you. That's it — GitHub is free.
+
+*(GitHub is just the website that stores the course files. Think of it like a
+Google Drive for code.)*
+
+### Step 2 — Open the course (one click)
+
+👉 **Click this link:**
+**https://codespaces.new/Sitraka17/durham-python-sql-2026**
+
+A page appears saying **“Set up your codespace”**. Click the green
+**“Create codespace”** button.
+
+*(A “codespace” is a private computer in the cloud, created just for you, with
+Python, the data, and everything already set up. Nothing touches your own
+laptop.)*
+
+### Step 3 — Wait for it to build *(first time only: ~2–3 minutes)*
+
+The screen turns into a code editor. **Leave the tab open and wait.** Behind the
+scenes it is installing the tools and building the database for you.
+
+> ⚠️ The **first** open takes a couple of minutes. After that, reopening takes
+> only a few seconds.
+
+### Step 4 — Know when it's ready
+
+Look at the **bottom of the screen**: there's a black panel called the
+**TERMINAL**. When it stops scrolling and shows a line ending in a `$` with a
+blinking cursor, the setup is finished.
+
+### Step 5 — Check everything is ready (copy → paste → Enter)
+
+Click anywhere inside that bottom **TERMINAL** panel, type (or paste) this line,
+and press **Enter**:
 
 ```bash
-python scripts/utils.py     # should print non-zero row counts for 4 tables
+python scripts/utils.py
 ```
 
-Then open any `sql/*.sql` or `scripts/*.py` and run it. The **SQLite Viewer**,
-**Python** and **Jupyter** extensions are pre-installed.
+✅ **You should see four lines with numbers**, like this:
+
+```
+  countries                               40 rows
+  fred_rates                             438 rows
+  indicators                           1,400 rows
+  oecd_unemployment                    1,258 rows
+```
+
+If you see those four lines, **you are fully set up.** 🎉
+*(If not, see [Troubleshooting](#-troubleshooting--faq) below.)*
+
+### Step 6 — Make your very first chart
+
+1. On the **left** is a list of folders. Click the **`scripts`** folder to open it.
+2. Click the file **`financial_indicators.py`**.
+3. At the **top-right** of the editor, click the **▶ (play) button** — its label
+   is *“Run Python File”*. *(If a menu asks you to choose a Python version, pick
+   the one that says **3.11**.)*
+4. Wait a few seconds — you'll see progress messages in the terminal.
+5. On the left, open the **`outputs`** folder and click
+   **`financial_dashboard.png`**. 🎉 **That's your first chart** — a five-panel
+   dashboard of the Fed's tightening cycle.
+
+> 💡 **Where do charts appear?** In the browser, charts do **not** pop up in a
+> window — they are **saved as `.png` images in the `outputs/` folder**. Open
+> that folder and click any image to view it. (You may see a harmless message
+> *“FigureCanvasAgg is non-interactive…”* — ignore it; the chart still saved.)
 
 ---
 
-## Local setup (fallback — VS Code on your own machine)
+## 💡 What am I actually looking at? (plain-English glossary)
+
+| Thing you see | What it really is |
+|---------------|-------------------|
+| **Codespace** | Your free cloud computer, running in the browser. |
+| **Terminal** (black panel, bottom) | Where you type commands and read messages. |
+| A **`.py`** file | A **Python** program. Run it with the ▶ button (top-right). |
+| A **`.sql`** file | A **SQL** query — a question you ask the database. |
+| **`outputs/`** folder | Where your charts (`.png`) and result tables (`.csv`) are saved. |
+| **`db/macro.db`** | The **database** of economic data. Click it to browse the tables. |
+| **▶ play button** | “Run this file”. The output appears in the terminal / `outputs/`. |
+
+---
+
+## ▶ How to run things (everyday cheat-sheet)
+
+**To run a program:** open any `.py` file and click the **▶** button (top-right).
+Or type its name in the terminal. The three you'll use most:
 
 ```bash
-# 1. Clone
+python scripts/concepts.py             # runnable demos of every key idea (Fisher, Taylor, yield curve)
+python scripts/financial_indicators.py # the big five-panel dashboard
+python scripts/pipeline.py             # the full data pipeline, start to finish
+```
+
+**To look at the data like a spreadsheet:** click **`db/macro.db`** in the left
+panel — it opens a table viewer (the *SQLite Viewer*, already installed).
+
+**To see your charts:** open the **`outputs/`** folder and click any `.png`.
+
+---
+
+## 🆘 Troubleshooting / FAQ
+
+**“It's been ‘Setting up your codespace’ for a while.”**
+The first build takes 2–3 minutes (allow up to 5). Don't close the tab. If it
+seems stuck after 5 minutes, reload the page.
+
+**“I closed the tab / I'm back the next day. Did I lose my work?”**
+No — your work is saved. Go to **https://github.com/codespaces**, and click your
+course codespace to reopen it.
+
+**“The terminal says `python: command not found`.”**
+Make sure you're typing in the codespace's bottom **TERMINAL** panel (not on your
+own computer), and that Step 3 finished. Reopen the codespace if needed.
+
+**“Do I need a password, credit card, or API key?”**
+**No.** The course ships with all the data it needs and runs completely offline.
+
+**“I ran a file but nothing popped up.”**
+That's expected in the browser. Charts are **saved to the `outputs/` folder** —
+open it and click the `.png`.
+
+**“I see a warning about `FigureCanvasAgg is non-interactive`.”**
+Harmless. It just means “no pop-up window here” — the chart was still saved to
+`outputs/`.
+
+**“The ▶ button asks me to select an interpreter.”**
+Choose the option that mentions **Python 3.11**.
+
+**“How do I not waste my free GitHub hours?”**
+When you finish for the day, go to **https://github.com/codespaces**, click the
+**…** next to your codespace, and choose **Stop codespace**. Your files stay
+saved; you just pause the meter.
+
+---
+
+## 🗓️ Day-by-day guide
+
+| Day | Block | Time | Open this file | The question |
+|-----|-------|------|----------------|--------------|
+| 1 | B1 | 09:00–10:00 | `sql/02_core_sql.sql` | What kind of inflation was the 2022 surge? |
+| 1 | B2 | 10:15–11:45 | `sql/03_joins_ctes.sql` | How did tightening spread globally? |
+| 1 | B3 | 13:00–14:30 | `sql/04_window_functions.sql` + `sql/05_financial_analysis.sql` | What did the yield curve signal? |
+| 2 | B4 | 09:00–10:30 | `notebooks/block4_python_apis.py` + `scripts/fetch_fred.py` | What does the labour market tell us? |
+| 2 | B5 | 10:45–12:15 | `notebooks/block5_etl_pipeline.py` + `scripts/pipeline.py` | Can we automate this monitoring? |
+| 2 | B6 | 13:00–14:30 | `capstone/track_[a\|b\|c]/analysis.py` | What would you advise the central bank? |
+
+**Practise as you go:** `exercises/day1_sql.sql` (Day 1) and
+`exercises/day2_python.py` (Day 2). Run `python scripts/concepts.py` any time
+for live demos of every key concept.
+
+---
+
+## 🤖 Block 7 (extension) — Machine Learning, on your laptop
+
+An optional final block applies machine learning to the same data — **entirely
+locally: scikit-learn, CPU only, no GPU, no cloud, no internet.** Each model
+trains in under a second. Full guide: **[ml/README.md](ml/README.md)**.
+
+```bash
+python ml/recession_prediction.py    # can the yield curve predict recessions?
+python ml/inflation_forecast.py       # forecast inflation (Ridge & Lasso)
+python ml/taylor_rule_regression.py   # learn the Fed's reaction function
+python ml/country_clustering.py       # group countries into macro "regimes"
+```
+
+The recession model would have *screamed* recession in 2022–24 — yet none came.
+That gap between a confident prediction and what actually happened is the perfect
+springboard for the course's central question.
+
+---
+
+<details>
+<summary><h2>📚 Reference (click to expand) — for the curious and for instructors</h2></summary>
+
+### Run on your own computer instead *(advanced, optional — Codespaces is easier)*
+
+You only need this if you cannot use Codespaces. Requires **Python 3.11+**.
+
+```bash
 git clone https://github.com/Sitraka17/durham-python-sql-2026.git
 cd durham-python-sql-2026
-
-# 2. Virtual environment  (Python 3.11+)
 python -m venv .venv
-source .venv/bin/activate      # Mac/Linux
-# .venv\Scripts\activate       # Windows PowerShell
-
-# 3. Install
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-
-# 4. Build data + database  (uses the bundled CSVs — NO API key required)
 cp .env.example .env
-python datasets/download.py --no-api
+python datasets/download.py --no-api   # uses bundled data — no API key needed
 python scripts/setup_db.py
-
-# 5. Verify
-python scripts/utils.py
+python scripts/utils.py                # verify
 ```
 
 One-shot alternative (Mac/Linux): `bash setup.sh`, or `make all`.
 
-> **FRED API key is optional.** Everything works offline from the bundled
-> `datasets/*_static.csv`. To pull *live* data instead, get a free key at
-> <https://fred.stlouisfed.org/docs/api/api_key.html>, put it in `.env`
-> (`FRED_KEY=...`), and run `python datasets/download.py` (without `--no-api`).
+> **A FRED API key is optional.** Everything works offline from the bundled
+> `datasets/*_static.csv`. For *live* data, get a free key at
+> <https://fred.stlouisfed.org/docs/api/api_key.html>, put `FRED_KEY=...` in
+> `.env`, and run `python datasets/download.py` (without `--no-api`).
 
----
-
-## Repository structure
+### Repository structure
 
 ```
 durham-python-sql-2026/
-│
-├── .devcontainer/devcontainer.json   One-click GitHub Codespaces environment
-├── .github/workflows/ci.yml          CI: builds the DB + runs all checks on push
-│
-├── datasets/
-│   ├── download.py                   Fetch WDI/FRED/OECD (--no-api uses bundles)
-│   ├── _build_static_csvs.py         (instructor) how the bundled CSVs were built
-│   ├── wdi_indicators.csv            World Bank WDI — 40 countries, 1990–2024
+├── .devcontainer/devcontainer.json   One-click Codespaces environment
+├── .github/workflows/ci.yml          Automated checks on every push
+├── datasets/                         Data + the download/build scripts
+│   ├── download.py                   Fetch data (--no-api uses the bundles)
+│   ├── wdi_indicators.csv            World Bank — 40 countries, 1990–2024
 │   ├── fred_rates_static.csv         FRED monthly series + derived indicators
-│   └── oecd_unemployment_static.csv  OECD/FRED harmonised quarterly unemployment
-│
-├── sql/
-│   ├── 01_schema.sql                 CREATE TABLE statements
-│   ├── 02_core_sql.sql               Block 1 — SELECT, GROUP BY, HAVING, CASE WHEN
-│   ├── 03_joins_ctes.sql             Block 2 — JOINs, subqueries, CTEs
-│   ├── 04_window_functions.sql       Block 3 — LAG, RANK, moving averages, yield curve
-│   ├── 05_financial_analysis.sql     Finance — Fisher, Taylor Rule, credit spreads
-│   └── 06_etl_queries.sql            Block 5 — SQL run inside the Python pipeline
-│
-├── scripts/
-│   ├── utils.py                      Shared: singleton engine, paths, logging
-│   ├── setup_db.py                   Build macro.db + 4 analytical views
-│   ├── fetch_fred.py                 FRED download + derived indicators (Block 4)
-│   ├── financial_indicators.py       Five-panel macro dashboard
-│   ├── pipeline.py                   Block 5 ETL (extract→transform→load→query→chart)
-│   └── concepts.py                   Runnable Fisher / Taylor / yield-curve / credit demos
-│
-├── notebooks/                        Concept-first, step-by-step Python scripts
-│   ├── block4_python_apis.py
-│   └── block5_etl_pipeline.py
-│
-├── exercises/
-│   ├── day1_sql.sql                  Scaffolded SQL with ??? blanks (answers inline)
-│   └── day2_python.py                Python exercises with a check() verifier
-│
-├── capstone/
-│   ├── track_a/analysis.py           UK labour market + sacrifice ratio
-│   ├── track_b/analysis.py           International spillovers + dollar-dominance index
-│   └── track_c/analysis.py           Yield-curve episodes + recession prediction
-│
+│   └── oecd_unemployment_static.csv  OECD/FRED quarterly unemployment
+├── sql/                              01 schema → 06 ETL queries (heavily commented)
+├── scripts/                          utils, setup_db, fetch_fred, pipeline,
+│                                     financial_indicators, concepts
+├── notebooks/                        block4_python_apis.py, block5_etl_pipeline.py
+├── exercises/                        day1_sql.sql, day2_python.py (with a checker)
+├── capstone/track_{a,b,c}/           Group-project starting points
 ├── ml/                               Block 7 — machine learning (local, CPU)
-│   ├── recession_prediction.py       Logistic regression: yield curve → recession
-│   ├── taylor_rule_regression.py     Learn the Fed's reaction function (OLS)
-│   └── country_clustering.py         k-means + PCA macro regimes
-│
 ├── docs/getting_economic_data.md     Tutorial: pulling FRED/World Bank/OECD data
-├── solutions/                        Model answers (added after the course)
-├── db/                               Generated SQLite database (git-ignored)
-├── outputs/                          Generated charts and CSVs (git-ignored)
-│
-├── requirements.txt
-├── .env.example
-├── Makefile
-├── setup.sh
-└── durham.code-workspace             VS Code workspace with recommended extensions
+├── db/        outputs/               Generated database / charts (auto-created)
+├── requirements.txt  Makefile  setup.sh  durham.code-workspace
 ```
 
----
-
-## Day-by-day guide
-
-| Day | Block | Time | File to open | Central question |
-|-----|-------|------|--------------|------------------|
-| 1 | B1 | 09:00–10:00 | `sql/02_core_sql.sql` | What kind of inflation was the 2022 surge? |
-| 1 | B2 | 10:15–11:45 | `sql/03_joins_ctes.sql` | How did tightening propagate globally? |
-| 1 | B3 | 13:00–14:30 | `sql/04_window_functions.sql` + `sql/05_financial_analysis.sql` | What did the yield curve signal? |
-| 2 | B4 | 09:00–10:30 | `notebooks/block4_python_apis.py` + `scripts/fetch_fred.py` | What does the labour market tell us? |
-| 2 | B5 | 10:45–12:15 | `notebooks/block5_etl_pipeline.py` + `scripts/pipeline.py` | Can we automate this monitoring? |
-| 2 | B6 | 13:00–14:30 | `capstone/track_[a\|b\|c]/analysis.py` | What would you recommend to the MPC? |
-
-Practice as you go: `exercises/day1_sql.sql` (Day 1) and `exercises/day2_python.py`
-(Day 2). Run `python scripts/concepts.py` for runnable demos of every key concept.
-
----
-
-## Block 7 (extension) — Machine Learning, locally
-
-An optional final block applying ML to the same data — **entirely on your
-laptop/Codespace: scikit-learn, CPU only, no GPU, no cloud, no internet.** Each
-script trains in under a second on the bundled `macro.db`.
-
-```bash
-python ml/recession_prediction.py     # -> outputs/ml_recession_probability.png
-python ml/taylor_rule_regression.py    # -> outputs/ml_reaction_function.png
-python ml/country_clustering.py        # -> outputs/ml_country_clusters.png
-```
-
-| Script | ML technique | Economic question |
-|--------|--------------|-------------------|
-| `recession_prediction.py` | Logistic regression (supervised classification) | Can the yield curve predict recessions? *(It would have screamed in 2022–24 — yet none came.)* |
-| `taylor_rule_regression.py` | Linear regression (supervised) | What is the Fed's *actual* reaction function, and when was it "behind the curve"? |
-| `country_clustering.py` | k-means + PCA (unsupervised) | Which countries form natural macro "regimes"? |
-
-The ML target is the NBER recession indicator (`recession` column in
-`fred_rates`, from FRED's `USREC`). These scripts deliberately show ML's limits
-as well as its power — the recession model's confidence in 2022–24 is the
-perfect springboard for "why did the soft landing happen?".
-
----
-
-## Data sources (all open-access)
+### Data sources (all open-access)
 
 | Source | Series | Used in |
 |--------|--------|---------|
-| [FRED](https://fred.stlouisfed.org) | FEDFUNDS, GS2/10/30, CPIAUCSL, PCEPILFE, M2SL, MORTGAGE30US, UNRATE, WALCL, BAML OAS | Blocks 3–6 |
+| [FRED](https://fred.stlouisfed.org) | FEDFUNDS, GS2/10/30, CPIAUCSL, PCEPILFE, M2SL, MORTGAGE30US, UNRATE, WALCL, BAML OAS, USREC | Blocks 3–7 |
 | [World Bank WDI](https://data.worldbank.org) | GDP per capita, inflation, unemployment, fiscal balance, current account | Blocks 1–2 |
 | [OECD](https://stats.oecd.org) (via FRED) | Harmonised quarterly unemployment, 12 economies | Block 3 |
 
-### Offline by default — data provenance
-
-The repo **ships with real, bundled data** so everything works with **zero API
-keys**. The bundles were produced by `datasets/_build_static_csvs.py` from public,
-key-less endpoints (FRED `fredgraph.csv` + the World Bank REST API) and reproduce
-the verified facts of the cycle (Fed funds peak 5.33%, CPI YoY peak ~9%, the
-10y–2y inversion of 2022–24, etc.).
+**Offline by default.** The repo ships with real, bundled data (built by
+`datasets/_build_static_csvs.py` from public, key-less endpoints) so everything
+works with zero API keys, reproducing the verified facts of the cycle (Fed funds
+peak 5.33%, CPI YoY peak ~9%, the 2022–24 yield-curve inversion).
 
 > **Note on credit spreads.** FRED only exposes ~3 years of the *licensed* ICE
-> BofA HY/IG OAS series on its public endpoint. The recent window therefore uses
-> the real ICE OAS; pre-2023 history is reconstructed by rescaling the
-> full-history Moody's Baa–10y credit spread (`BAA10Y`) to OAS levels over the
-> overlap period. Both inputs are real FRED series — the historical tail is a
-> real-spread reconstruction, not synthetic noise, and reproduces the GFC, COVID
-> and 2022 stress episodes.
+> BofA HY/IG OAS series publicly, so pre-2023 history is reconstructed by
+> rescaling the full-history Moody's Baa–10y spread (`BAA10Y`) over the overlap.
+> Both inputs are real FRED series; the historical tail is a real-spread
+> reconstruction, reproducing the GFC, COVID and 2022 stress episodes.
 
-**Want live data?** See **[docs/getting_economic_data.md](docs/getting_economic_data.md)** —
-a step-by-step tutorial on pulling FRED, World Bank and OECD data in Python
-(key-less and keyed), the series IDs used here, and how to refresh the bundles.
+**Want live data?** See **[docs/getting_economic_data.md](docs/getting_economic_data.md)**.
 
----
-
-## Key financial indicators derived in code
+### Key financial indicators derived in code
 
 | Indicator | Formula | FRED input |
 |-----------|---------|------------|
@@ -213,35 +279,25 @@ a step-by-step tutorial on pulling FRED, World Bank and OECD data in Python
 | Mortgage spread | `MORTGAGE30US − GS10` | MORTGAGE30US, GS10 |
 | M2 YoY growth | `M2SL.pct_change(12)×100` | M2SL |
 
-These are computed in `datasets/download.py` / `scripts/fetch_fred.py` and exposed
-through four SQL views built by `scripts/setup_db.py`:
+Exposed through four SQL views built by `scripts/setup_db.py`:
 `v_gdp_ranked`, `v_yield_curve`, `v_real_rates`, `v_credit_dashboard`.
 
----
-
-## Makefile commands
+### Makefile commands (own-computer setup)
 
 ```bash
-make all        # venv + download + database (full setup)
-make data       # download datasets only
-make db         # build macro.db from CSVs
-make pipeline   # run Block 5 end-to-end
-make dashboard  # run financial_indicators.py (full 5-panel chart)
-make clean      # remove generated DB and outputs
+make all        # full setup: venv + data + database
+make pipeline   # run the Block 5 pipeline end-to-end
+make dashboard  # build the five-panel chart
 make test       # verify database row counts
+make clean      # remove generated DB and charts
 ```
 
----
+### VS Code extensions (pre-installed in Codespaces)
 
-## VS Code setup
+**SQLite Viewer** (browse `.db` files) · **Python** · **Jupyter**.
+Open the workspace: *File → Open Workspace from File → `durham.code-workspace`*.
 
-Install these extensions (Ctrl+Shift+X) — pre-installed in Codespaces:
-
-- **SQLite Viewer** (qwtel) — browse `.db` files directly
-- **Python** (Microsoft) — linting, IntelliSense
-- **Jupyter** (Microsoft) — run notebooks in VS Code
-
-Open the workspace: **File → Open Workspace from File → `durham.code-workspace`**
+</details>
 
 ---
 
