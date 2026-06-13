@@ -306,6 +306,13 @@ Open the workspace: *File → Open Workspace from File → `durham.code-workspac
 
 ---
 
+## License
+
+Released under the [MIT License](LICENSE) — free to reuse, adapt and teach
+from, with attribution. © 2026 Sitraka Forler.
+
+---
+
 ## Instructor
 
 **Sitraka Forler**
