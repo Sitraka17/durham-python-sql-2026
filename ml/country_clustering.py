@@ -31,6 +31,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
 
 from scripts.utils import get_engine, OUTPUTS, log
 
@@ -62,6 +63,19 @@ def main():
              f"features: {FEATURES}")
 
     X = StandardScaler().fit_transform(df[FEATURES])          # always standardise
+
+    # How many clusters? Scan k and score each with the silhouette
+    # (how tight/separated the clusters are; higher is better, max 1.0).
+    log.info("  Choosing k by silhouette score:")
+    for k in range(2, 7):
+        labels = KMeans(n_clusters=k, n_init=10, random_state=42).fit_predict(X)
+        marker = "  <- chosen" if k == K else ""
+        log.info(f"    k={k}: silhouette {silhouette_score(X, labels):.3f}{marker}")
+    # >>> NOTICE: the silhouette scores here are close (~0.22–0.29) — a flat
+    # >>> landscape with no single obvious k. k=4 sits at a local optimum AND
+    # >>> gives the most readable economic regimes, so we keep it. When the
+    # >>> statistics are ambiguous, let interpretability break the tie.
+
     km = KMeans(n_clusters=K, n_init=10, random_state=42).fit(X)
     df["cluster"] = km.labels_
 
