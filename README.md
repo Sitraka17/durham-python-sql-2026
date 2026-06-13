@@ -220,7 +220,8 @@ Three guides to take what you've built further and turn it into a career asset:
   (central banks, IMF/World Bank/OECD/BIS, investment banks, asset managers,
   hedge funds, economic consultancies, think tanks, data firms) **with links**,
   plus a step-by-step to **host your own portfolio on GitHub Pages** and turn
-  this very course into your first portfolio piece.
+  this very course into your first portfolio piece. Copy-paste starter site:
+  **[templates/portfolio/](templates/portfolio/)**.
 
 ---
 
@@ -268,7 +269,8 @@ durham-python-sql-2026/
 ├── exercises/                        day1_sql.sql, day2_python.py (with a checker)
 ├── capstone/track_{a,b,c}/           Group-project starting points
 ├── ml/                               Block 7 — machine learning (local, CPU)
-├── docs/getting_economic_data.md     Tutorial: pulling FRED/World Bank/OECD data
+├── docs/                             Guides: data sources, paper-writing, careers
+├── templates/portfolio/              Copy-paste GitHub Pages starter site
 ├── db/        outputs/               Generated database / charts (auto-created)
 ├── requirements.txt  Makefile  setup.sh  durham.code-workspace
 ```
@@ -342,4 +344,5 @@ from, with attribution. © 2026 Sitraka Forler.
 Systems Architect & Senior Data Scientist, POST Luxembourg ·
 Lecturer, IAE Metz & Centrale Méditerranée (AMU) ·
 [sitraka.forler@post.lu](mailto:sitraka.forler@post.lu) ·
+[LinkedIn](https://www.linkedin.com/in/sitraka-matthieu-forler/) ·
 [github.com/Sitraka17](https://github.com/Sitraka17)

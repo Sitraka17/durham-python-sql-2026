@@ -1,0 +1,5 @@
+# Minimal GitHub Pages config. The "minimal" theme is built in to GitHub Pages,
+# so your site looks clean with zero extra setup. Edit the two lines below.
+theme: jekyll-theme-minimal
+title: "YOUR NAME — Economics & Data"
+description: "MSc Economics, Durham University Business School"

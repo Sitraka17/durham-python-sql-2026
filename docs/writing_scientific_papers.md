@@ -108,7 +108,9 @@ can reproduce it**. You already have the ingredients:
 - **Pin your data.** State the FRED series IDs and access date (see the citation
   example in [data_sources.md](data_sources.md)).
 - **Share your code.** Link your GitHub repo/fork in the paper's footnote or a
-  "Data & code availability" statement — exactly what journals now require.
+  "Data & code availability" statement — exactly what journals now require. A
+  ready-to-paste one (LaTeX + plain text) is in
+  [templates/data_and_code_availability.md](../templates/data_and_code_availability.md).
 - **Fix randomness.** Any ML in your paper should set a seed (the `ml/` scripts
   use `random_state=42`) so results are identical on re-run.
 - **Separate raw from derived.** Never edit raw data by hand; transform it in

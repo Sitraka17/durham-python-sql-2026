@@ -134,6 +134,12 @@ cost. Here's the simplest path.
    profile page. Put a short intro + links to your projects.
 
 ### B. Publish a portfolio website (`username.github.io`)
+
+> ⚡ **Shortcut:** don't start from a blank page — this repo ships a ready
+> homepage at **[`templates/portfolio/`](../templates/portfolio/)** (`index.md` +
+> `_config.yml`). Copy those two files into your site repo and just replace the
+> placeholders. The manual steps below explain what's happening.
+
 1. Create a new repository named **`<your-username>.github.io`** (all lowercase).
 2. Add a file `index.md` (Markdown is fine — GitHub renders it as a web page):
    ```markdown
