@@ -1,3 +1,7 @@
+-- 📖 New here? A plain-English (Feynman-style) explanation of every
+-- concept below — the economics, the SQL, the why — is in
+-- docs/concepts_explained.md. Read it alongside this file.
+-- ----------------------------------------------------------------
 -- ================================================================
 -- 02_core_sql.sql  |  BLOCK 1  |  Core SQL for Economic Analysis
 -- Central question: "What kind of inflation was the 2021-22 surge?"

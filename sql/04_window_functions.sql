@@ -1,3 +1,7 @@
+-- 📖 New here? A plain-English (Feynman-style) explanation of every
+-- concept below — the economics, the SQL, the why — is in
+-- docs/concepts_explained.md. Read it alongside this file.
+-- ----------------------------------------------------------------
 -- ================================================================
 -- 04_window_functions.sql  |  BLOCK 3  |  Window Functions
 -- Central question: "What did the yield curve signal in 2022?"

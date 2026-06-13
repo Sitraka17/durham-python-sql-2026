@@ -1,3 +1,7 @@
+-- 📖 New here? A plain-English (Feynman-style) explanation of every
+-- concept below — the economics, the SQL, the why — is in
+-- docs/concepts_explained.md. Read it alongside this file.
+-- ----------------------------------------------------------------
 -- ================================================================
 -- 01_schema.sql
 -- Block 1 — Database schema

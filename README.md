@@ -169,6 +169,12 @@ saved; you just pause the meter.
 
 ## 🗓️ Day-by-day guide
 
+> 📖 **New to SQL, Python, or the macroeconomics?** Read
+> **[docs/concepts_explained.md](docs/concepts_explained.md)** first — or keep it
+> open alongside. It explains *every* concept in plain English (Feynman-style:
+> an analogy first, then the precise version), and points to exactly where each
+> one appears. Every `.sql` file and every teaching `.py` file links to it too.
+
 | Day | Block | Time | Open this file | The question |
 |-----|-------|------|----------------|--------------|
 | 1 | B1 | 09:00–10:00 | `sql/02_core_sql.sql` | What kind of inflation was the 2022 surge? |

@@ -1,3 +1,6 @@
+# 📖 New here? A plain-English (Feynman-style) explanation of every concept
+# used below — Python, the economics, the ML — is in
+# docs/concepts_explained.md. Read it alongside this file.
 """
 exercises/day2_python.py
 =========================
