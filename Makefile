@@ -1,4 +1,4 @@
-.PHONY: all setup data db pipeline dashboard test clean
+.PHONY: all setup data db pipeline dashboard track-a track-b track-c ml verify test clean
 
 PYTHON := .venv/bin/python
 
@@ -58,6 +58,25 @@ track-b:
 
 track-c:
 	$(PYTHON) capstone/track_c/analysis.py
+
+# ----------------------------------------------------------------
+# Run all Block 7 machine-learning scripts (local, CPU)
+# ----------------------------------------------------------------
+ml:
+	$(PYTHON) ml/recession_prediction.py
+	$(PYTHON) ml/inflation_forecast.py
+	$(PYTHON) ml/taylor_rule_regression.py
+	$(PYTHON) ml/country_clustering.py
+
+# ----------------------------------------------------------------
+# End-to-end self-check (offline) — mirrors what CI does
+# ----------------------------------------------------------------
+verify:
+	$(PYTHON) datasets/download.py --no-api
+	$(PYTHON) scripts/setup_db.py
+	$(PYTHON) scripts/utils.py
+	$(PYTHON) scripts/pipeline.py
+	@echo "=== verify OK: data built, DB populated, pipeline ran ==="
 
 # ----------------------------------------------------------------
 # Verify the database

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: >-
+  Advanced Python and SQL for Applied Economic & Financial Analysis
+  (Durham MSc Economics)
+message: "If you use these course materials, please cite them as below."
+type: software
+authors:
+  - given-names: Sitraka
+    family-names: Forler
+    email: sitraka.forler@post.lu
+    affiliation: "POST Luxembourg; IAE Metz; Centrale Méditerranée (AMU)"
+abstract: >-
+  A two-day, hands-on workshop teaching Python and SQL for applied economic
+  analysis, built around the question "Did the Fed's 2022–23 tightening cycle
+  work?". Uses real FRED, World Bank and OECD data, runs zero-install in GitHub
+  Codespaces, and includes a local machine-learning module (scikit-learn).
+keywords:
+  - economics
+  - python
+  - sql
+  - machine-learning
+  - monetary-policy
+  - teaching-materials
+repository-code: "https://github.com/Sitraka17/durham-python-sql-2026"
+url: "https://github.com/Sitraka17/durham-python-sql-2026"

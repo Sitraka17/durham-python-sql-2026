@@ -1,0 +1,13 @@
+# Normalise line endings so Windows, macOS and Linux students never see
+# spurious whole-file diffs or "^M" characters.
+* text=auto eol=lf
+
+# Shell scripts must stay LF even on Windows checkouts (they run in the
+# Linux Codespace / bash).
+*.sh    text eol=lf
+
+# Treat data and images as the right type
+*.csv   text
+*.png   binary
+*.pdf   binary
+*.db    binary

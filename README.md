@@ -3,6 +3,11 @@
 **Durham University Business School — MSc Economics**
 Sitraka Forler · 15–16 June 2026
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Sitraka17/durham-python-sql-2026)
+
+*(↑ Students: click this green button to start — no installation. See
+[Start here](#-start-here--no-installation-no-experience-needed) below.)*
+
 > ### The big question we answer this week
 > **"Did the Fed's tightening cycle work?"**
 > In March 2022 the US Federal Reserve began the most aggressive interest-rate

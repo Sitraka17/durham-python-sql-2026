@@ -5,8 +5,9 @@
 -- HOW TO USE THIS FILE
 -- Run each exercise in VS Code SQLite Viewer.
 -- Attempt the task BEFORE reading the scaffold.
--- The scaffold shows you the STRUCTURE -- you fill in the ???.
--- Model answers are at the bottom of each exercise.
+-- The scaffold shows you the STRUCTURE -- you fill in the ??? blanks.
+-- Stuck? The taught queries in sql/02-05 use the same patterns; the full
+-- model answers live in the instructor's solutions/ folder.
 -- Mark an exercise DONE when you can explain EVERY line.
 -- ================================================================
 
@@ -37,9 +38,9 @@
 SELECT i.country_code,
        c.country_name,
        c.region,
-       ROUND(AVG(CASE WHEN i.year = 2021 THEN i.inflation END), 2) AS avg_21,
-       ROUND(AVG(CASE WHEN i.year = 2022 THEN i.inflation END), 2) AS avg_22,
-       ROUND(AVG(CASE WHEN i.year = 2023 THEN i.inflation END), 2) AS avg_23,
+       ROUND(AVG(CASE WHEN i.year = 2021 THEN i.inflation END), 2) AS avg_21,  -- worked example
+       ROUND(???, 2) AS avg_22,   -- ??? = copy the avg_21 pattern, switch the year to 2022
+       ROUND(???, 2) AS avg_23,   -- ??? = ... and to 2023
        CASE
            WHEN AVG(CASE WHEN i.year = 2022 THEN i.inflation END) >= 8  THEN 'Severe'
            WHEN AVG(CASE WHEN i.year = 2022 THEN i.inflation END) >= 5  THEN 'High'
@@ -89,8 +90,8 @@ WITH fiscal_class AS (
     SELECT country_code,
            AVG(fiscal_balance) AS avg_fiscal_2020_21,
            CASE
-               WHEN AVG(fiscal_balance) < -5  THEN 'Large deficit (<-5%)'
-               WHEN AVG(fiscal_balance) < -2  THEN 'Moderate deficit (-2 to -5%)'
+               WHEN AVG(fiscal_balance) < ???  THEN 'Large deficit (<-5%)'      -- ??? = the threshold
+               WHEN AVG(fiscal_balance) < ???  THEN 'Moderate deficit (-2 to -5%)'
                ELSE                                'Near balanced (>=-2%)'
            END AS fiscal_group
     FROM   indicators
@@ -170,9 +171,9 @@ SELECT country_code,
        -- Vulnerability score: higher is more exposed
        -- Weights: 40% inflation impact, 30% CA deficit, 30% low income
        ROUND(
-           COALESCE(inflation_2022, 0) * 0.40
-           + COALESCE(-worst_ca_balance, 0) * 0.30
-           + COALESCE(100000.0 / NULLIF(gdp_per_cap_2022, 0), 0) * 0.30
+           COALESCE(inflation_2022, 0) * ???        -- ??? = the three weights (they sum to 1.0)
+           + COALESCE(-worst_ca_balance, 0) * ???
+           + COALESCE(100000.0 / NULLIF(gdp_per_cap_2022, 0), 0) * ???
        , 1) AS vulnerability_score
 FROM   vulnerability
 WHERE  inflation_2022 IS NOT NULL
@@ -225,7 +226,7 @@ spread AS (
 transitions AS (
     SELECT date, spread_pp, inverted,
            -- This is 1 at the START of a new inversion episode, 0 otherwise
-           inverted - LAG(inverted, 1, 0) OVER (ORDER BY date) AS episode_start
+           ??? AS episode_start   -- ??? = inverted now MINUS inverted last month (use LAG)
     FROM spread
 ),
 
@@ -235,7 +236,7 @@ transitions AS (
 episode_ids AS (
     SELECT date, spread_pp, inverted,
            SUM(CASE WHEN episode_start = 1 THEN 1 ELSE 0 END)
-               OVER (ORDER BY date ROWS UNBOUNDED PRECEDING) AS episode_id
+               OVER (???) AS episode_id   -- ??? = running total from the start (ORDER BY date ROWS ...)
     FROM transitions
 ),
 
