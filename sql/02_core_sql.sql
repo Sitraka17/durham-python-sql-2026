@@ -1,6 +1,7 @@
 -- 📖 New here? A plain-English (Feynman-style) explanation of every
 -- concept below — the economics, the SQL, the why — is in
 -- docs/concepts_explained.md. Read it alongside this file.
+-- 💡 Real story: in 2021 this inflation was called "transitory" — until it hit 9.1%. docs/finance_anecdotes.md
 -- ----------------------------------------------------------------
 -- ================================================================
 -- 02_core_sql.sql  |  BLOCK 1  |  Core SQL for Economic Analysis

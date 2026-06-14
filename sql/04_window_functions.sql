@@ -1,6 +1,7 @@
 -- 📖 New here? A plain-English (Feynman-style) explanation of every
 -- concept below — the economics, the SQL, the why — is in
 -- docs/concepts_explained.md. Read it alongside this file.
+-- 💡 Real story: the 2022-24 inversion was the LONGEST on record — and Campbell Harvey doubted his own indicator. docs/finance_anecdotes.md
 -- ----------------------------------------------------------------
 -- ================================================================
 -- 04_window_functions.sql  |  BLOCK 3  |  Window Functions

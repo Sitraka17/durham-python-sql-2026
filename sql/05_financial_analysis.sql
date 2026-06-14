@@ -1,6 +1,7 @@
 -- 📖 New here? A plain-English (Feynman-style) explanation of every
 -- concept below — the economics, the SQL, the why — is in
 -- docs/concepts_explained.md. Read it alongside this file.
+-- 💡 Real story: Silicon Valley Bank (2023) was killed by "safe" long bonds — duration risk made real. docs/finance_anecdotes.md
 -- ----------------------------------------------------------------
 -- ================================================================
 -- 05_financial_analysis.sql

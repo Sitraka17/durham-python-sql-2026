@@ -174,6 +174,12 @@ saved; you just pause the meter.
 > open alongside. It explains *every* concept in plain English (Feynman-style:
 > an analogy first, then the precise version), and points to exactly where each
 > one appears. Every `.sql` file and every teaching `.py` file links to it too.
+>
+> 💡 **Want the human story behind the numbers?**
+> **[docs/finance_anecdotes.md](docs/finance_anecdotes.md)** gives each block a
+> real market anecdote — Volcker breaking inflation on purpose, "Team
+> Transitory", SVB killed by *safe* bonds, the 2022 UK gilt/pension crisis, and
+> the economist who publicly doubted his own famous recession indicator.
 
 | Day | Block | Time | Open this file | The question |
 |-----|-------|------|----------------|--------------|

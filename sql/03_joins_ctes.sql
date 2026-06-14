@@ -1,6 +1,7 @@
 -- 📖 New here? A plain-English (Feynman-style) explanation of every
 -- concept below — the economics, the SQL, the why — is in
 -- docs/concepts_explained.md. Read it alongside this file.
+-- 💡 Real story: a strong dollar punished emerging markets (Argentina >100%, Turkey ~85%). docs/finance_anecdotes.md
 -- ----------------------------------------------------------------
 -- ================================================================
 -- 03_joins_ctes.sql

@@ -9,6 +9,11 @@
 **How each entry is laid out:**
 > 🧠 **In one line** · 🍎 **Analogy** · ⚙️ **What it really does** · 💻 **Tiny example** · 📂 **Where in the course**
 
+> 💡 **Concepts stick when they have a story.** Pair this guide with
+> [finance_anecdotes.md](finance_anecdotes.md) — a real market tale for each idea
+> (Volcker, SVB, the 2022 UK gilt crisis, the yield-curve indicator its own
+> inventor came to doubt).
+
 **Contents**
 1. [The thinking — the economics](#1-the-thinking--the-economics)
 2. [SQL — asking the database questions](#2-sql--asking-the-database-questions)

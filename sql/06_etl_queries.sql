@@ -1,6 +1,7 @@
 -- 📖 New here? A plain-English (Feynman-style) explanation of every
 -- concept below — the economics, the SQL, the why — is in
 -- docs/concepts_explained.md. Read it alongside this file.
+-- 💡 Real story: "whatever it takes" — three words from Draghi (2012) that moved markets. docs/finance_anecdotes.md
 -- ----------------------------------------------------------------
 -- ================================================================
 -- 06_etl_queries.sql
