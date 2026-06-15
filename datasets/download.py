@@ -114,6 +114,19 @@ FRED_SERIES = {
 
 
 def download_fred(no_api: bool) -> None:
+    """Fetch FRED data live, or fall back to the bundled snapshot.
+
+    WHY ship a static CSV and default to `--no-api`?
+      REPRODUCIBILITY. An analysis wired to a live API gives a *different* answer
+      every day and breaks when the API is down, rate-limits you, or changes its
+      format. Committing a frozen snapshot means the result is byte-identical for
+      every student today and in a year — and it works offline, on a plane.
+
+    IN THE REAL WORLD: "it worked yesterday" is the most expensive sentence in
+    software. Journals and regulators require results to *reproduce*; quant
+    backtests must run on frozen history, not a moving target. Snapshotting your
+    inputs is professional hygiene. (See docs/why_we_code_this.md §5.)
+    """
     import os
     out = HERE / "fred_rates.csv"
     static = HERE / "fred_rates_static.csv"

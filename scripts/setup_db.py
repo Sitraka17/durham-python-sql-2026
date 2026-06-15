@@ -56,6 +56,16 @@ def load_csv(filename: str, table: str, parse_dates: list[str] | None = None):
 
 # ----------------------------------------------------------------
 # SQL views — analytical layers on top of raw tables
+#
+# WHY define VIEWS (saved queries that act like tables) instead of copy-pasting
+# the same SELECT into every script? Define each calculation ONCE, here. Every
+# script and chart then reads e.g. `v_yield_curve` and gets the identical
+# definition; change the logic in one place and everything updates. No drifting,
+# copy-pasted formulas — the #1 source of "why do our numbers disagree?".
+#
+# IN THE REAL WORLD: this is exactly how BI tools (Tableau, Power BI, Looker) and
+# the modern data stack (dbt) work — a curated "semantic layer" of trusted,
+# named metrics between raw tables and analysts. (See docs/why_we_code_this.md §3.)
 # ----------------------------------------------------------------
 VIEWS: dict[str, str] = {
 

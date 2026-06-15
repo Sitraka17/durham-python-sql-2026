@@ -87,6 +87,16 @@ SELECT * FROM spread ORDER BY date
 
 # ----------------------------------------------------------------
 # Pipeline steps
+#
+# WHY split one job into five tiny functions (Extract, Transform, Load, Query,
+# Visualise) instead of one big script? Each stage has ONE responsibility, so if
+# the download breaks you fix extract() without touching the chart code; if a
+# chart is wrong you fix visualise() without re-downloading. Small, single-purpose
+# steps are testable and debuggable; a 300-line "do everything" blob is not.
+#
+# IN THE REAL WORLD: this IS data engineering — tools like Airflow, Dagster and
+# dbt exist to orchestrate exactly these stages, and "build me a data pipeline"
+# is a whole job. (See docs/why_we_code_this.md §4.)
 # ----------------------------------------------------------------
 def extract() -> pd.DataFrame:
     log.info("[1/5] EXTRACT")

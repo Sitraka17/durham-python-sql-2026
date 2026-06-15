@@ -50,7 +50,22 @@ log = logging.getLogger("durham")
 _engine = None
 
 def get_engine():
-    """Return a cached SQLAlchemy engine for db/macro.db."""
+    """Return a cached SQLAlchemy engine for db/macro.db.
+
+    WHY a single cached engine (a "singleton")?
+      Opening a brand-new database connection for every query is slow and leaks
+      resources. We build the engine ONCE and hand the same one to every script.
+
+    WHY SQLAlchemy instead of Python's built-in sqlite3 module?
+      Portability. SQLAlchemy speaks SQLite, PostgreSQL, MySQL, Snowflake and
+      BigQuery through the SAME code. We use SQLite so the course needs zero
+      install; a bank would point this identical line at Postgres by changing
+      only the connection URL — not the analysis.
+
+    IN THE REAL WORLD: you will almost never meet SQLite in production — you'll
+    meet Postgres / Snowflake / BigQuery. Coding against an abstraction is why
+    your analysis survives that switch. (See docs/why_we_code_this.md §2.)
+    """
     global _engine
     if _engine is None:
         from sqlalchemy import create_engine

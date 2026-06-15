@@ -12,7 +12,9 @@
 > 💡 **Concepts stick when they have a story.** Pair this guide with
 > [finance_anecdotes.md](finance_anecdotes.md) — a real market tale for each idea
 > (Volcker, SVB, the 2022 UK gilt crisis, the yield-curve indicator its own
-> inventor came to doubt).
+> inventor came to doubt) — and with [why_we_code_this.md](why_we_code_this.md),
+> which explains *why* the code is built this way and how each habit pays off in
+> a real job.
 
 **Contents**
 1. [The thinking — the economics](#1-the-thinking--the-economics)

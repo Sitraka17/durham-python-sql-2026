@@ -180,6 +180,12 @@ saved; you just pause the meter.
 > real market anecdote — Volcker breaking inflation on purpose, "Team
 > Transitory", SVB killed by *safe* bonds, the 2022 UK gilt/pension crisis, and
 > the economist who publicly doubted his own famous recession indicator.
+>
+> 🛠️ **Why is it built this way — and how does it help me get hired?**
+> **[docs/why_we_code_this.md](docs/why_we_code_this.md)** explains the *engineering
+> judgment* behind every design choice (databases, views, ETL, reproducibility,
+> honest model evaluation) and maps each to a real job skill. The
+> **[docs/](docs/)** folder has an index of all guides.
 
 | Day | Block | Time | Open this file | The question |
 |-----|-------|------|----------------|--------------|
