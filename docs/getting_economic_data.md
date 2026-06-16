@@ -170,6 +170,35 @@ get other countries.
 
 ---
 
+## 3b. Kaggle — community & alternative datasets
+
+FRED/World Bank/OECD give you clean *official* series. **Kaggle** is the other
+half: thousands of community datasets — firm-level panels, scraped prices,
+surveys, alternative data — ideal for a dissertation that needs something the
+official sources don't publish.
+
+One-time setup: create a free Kaggle account → Settings → API →
+**"Create New Token"** (downloads `kaggle.json`). Put it at `~/.kaggle/kaggle.json`
+(`chmod 600`), or set `KAGGLE_USERNAME` / `KAGGLE_KEY` (in Codespaces, add them as
+Codespaces secrets). Then download *reproducibly* by slug:
+
+```bash
+# the slug for kaggle.com/datasets/<owner>/<name> is "<owner>/<name>"
+python datasets/fetch_kaggle.py owner/dataset-name
+python datasets/fetch_kaggle.py owner/dataset-name --to-db my_table   # load into macro.db
+```
+
+`datasets/fetch_kaggle.py` downloads the dataset, previews every CSV, and can
+load one straight into `db/macro.db` so you can **JOIN Kaggle data to the
+FRED/World Bank tables in SQL** — exactly the integration skill from Block 2.
+With no token it just prints the setup steps (it never breaks the build).
+
+> ⚠️ Check each dataset's **licence** on its Kaggle page before using it in a
+> publication, and cite it. See
+> [building_a_thesis_dataset.md](building_a_thesis_dataset.md) §9.
+
+---
+
 ## 4. Refreshing this repo's bundled data
 
 To rebuild all three static CSVs from live sources (e.g. next year):
@@ -212,4 +241,7 @@ python scripts/setup_db.py
 - `datasets/_build_static_csvs.py` — the full, working provenance script.
 - `scripts/fetch_fred.py` — keyed FRED fetch with static-CSV fallback.
 - `datasets/download.py` — the orchestrator (`--no-api` for offline).
-- Kaggle
+- **Kaggle** — community/alternative datasets: download reproducibly with
+  [`datasets/fetch_kaggle.py`](../datasets/fetch_kaggle.py) (see §3b above).
+- **[building_a_thesis_dataset.md](building_a_thesis_dataset.md)** — turning all
+  of this into a defensible dataset for your dissertation.
