@@ -212,3 +212,4 @@ python scripts/setup_db.py
 - `datasets/_build_static_csvs.py` — the full, working provenance script.
 - `scripts/fetch_fred.py` — keyed FRED fetch with static-CSV fallback.
 - `datasets/download.py` — the orchestrator (`--no-api` for offline).
+- Kaggle
