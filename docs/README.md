@@ -1,6 +1,6 @@
 # Course guides (`docs/`)
 
-Companion material for the workshop. Start with whichever matches where you are.
+Companion material for the workshop since we don't have much time. Start with whichever matches where you are.
 
 ### Learn the material
 - **[concepts_explained.md](concepts_explained.md)** — every concept (economics,
