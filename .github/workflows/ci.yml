@@ -1,0 +1,120 @@
+name: CI — Verify course repository
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      # Repo root on the import path so `from scripts.* import ...` works
+      # regardless of how a file is launched.
+      PYTHONPATH: ${{ github.workspace }}
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip -q
+          pip install -r requirements.txt -q
+
+      - name: Create .env (no real API key needed for CI)
+        run: cp .env.example .env
+
+      - name: Download datasets (no-api mode — use bundled static CSVs)
+        run: python datasets/download.py --no-api
+
+      - name: Build database
+        run: python scripts/setup_db.py
+
+      - name: Verify database (row counts must be non-zero)
+        run: |
+          python scripts/utils.py
+          python - <<'PY'
+          from scripts.utils import get_engine
+          from sqlalchemy import text
+          eng = get_engine()
+          with eng.connect() as c:
+              for t in ("countries", "indicators", "fred_rates", "oecd_unemployment"):
+                  n = c.execute(text(f"SELECT COUNT(*) FROM {t}")).scalar()
+                  assert n > 0, f"table {t} is empty"
+                  print(f"  {t}: {n} rows")
+              for v in ("v_gdp_ranked", "v_yield_curve", "v_real_rates", "v_credit_dashboard"):
+                  n = c.execute(text(f"SELECT COUNT(*) FROM {v}")).scalar()
+                  assert n > 0, f"view {v} is empty"
+                  print(f"  {v}: {n} rows")
+          print("database OK")
+          PY
+
+      - name: Compile every Python file
+        run: |
+          python - <<'PY'
+          import pathlib, py_compile, sys
+          bad = []
+          for p in pathlib.Path(".").rglob("*.py"):
+              if ".venv" in p.parts:
+                  continue
+              try:
+                  py_compile.compile(str(p), doraise=True)
+              except py_compile.PyCompileError as e:
+                  bad.append((str(p), e))
+          for f, e in bad:
+              print(f"COMPILE FAIL {f}: {e}")
+          print(f"compiled {'with errors' if bad else 'OK'}")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Run the Block 5 ETL pipeline (creates the fred_macro table)
+        run: python scripts/pipeline.py
+
+      - name: Smoke-test SQL against the built database
+        run: |
+          python - <<'PY'
+          import sqlite3, re, glob, sys
+          conn = sqlite3.connect("db/macro.db")
+          fails = 0
+          for f in sorted(glob.glob("sql/*.sql")):
+              sql = re.sub(r"--[^\n]*", "", open(f).read())   # strip comments first
+              n = 0
+              for stmt in sql.split(";"):
+                  s = stmt.strip()
+                  if not s:
+                      continue
+                  try:
+                      conn.execute(s).fetchall()
+                      n += 1
+                  except Exception as e:
+                      fails += 1
+                      print(f"SQL FAIL {f}: {e}\n   {s[:100]!r}")
+              print(f"  {f}: {n} statements OK")
+          conn.close()
+          sys.exit(1 if fails else 0)
+          PY
+
+      - name: Smoke-test the ML module (Block 7, local CPU)
+        run: |
+          python ml/recession_prediction.py
+          python ml/inflation_forecast.py
+          python ml/taylor_rule_regression.py
+          python ml/country_clustering.py
+
+      - name: Import checks
+        run: |
+          python -c "from scripts.utils import get_engine, DATASETS, OUTPUTS; print('utils OK')"
+          python -c "from scripts.fetch_fred import _derive, fetch; print('fetch_fred OK')"
+          python -c "import scripts.pipeline, scripts.financial_indicators, scripts.concepts; print('scripts import OK')"
