@@ -83,7 +83,7 @@ career.
 |--------|------|------|
 | **DBnomics** | Aggregates FRED/IMF/OECD/Eurostat/BIS… one API | https://db.nomics.world |
 | Google Dataset Search | Search engine for datasets | https://datasetsearch.research.google.com |
-| Kaggle Datasets | Community datasets + notebooks | https://www.kaggle.com/datasets |
+| Kaggle Datasets | Community datasets + notebooks — **download reproducibly with [`datasets/fetch_kaggle.py`](../datasets/fetch_kaggle.py)** | https://www.kaggle.com/datasets |
 | Trading Economics | Quick country dashboards | https://tradingeconomics.com |
 | data.gov (US) | US open data | https://data.gov |
 

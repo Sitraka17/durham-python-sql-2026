@@ -15,7 +15,11 @@ Companion material for the workshop since we don't have much time. Start with wh
 - **[getting_economic_data.md](getting_economic_data.md)** — how to pull live FRED
   / World Bank / OECD data in Python (key-less and keyed).
 - **[data_sources.md](data_sources.md)** — a directory of economic & financial
-  data sources, with links.
+  data sources, with links. (Kaggle datasets: download reproducibly with
+  [../datasets/fetch_kaggle.py](../datasets/fetch_kaggle.py).)
+- **[building_a_thesis_dataset.md](building_a_thesis_dataset.md)** — how to design
+  and build a defensible dataset for your master's thesis (units, merging, data
+  quality, the bias traps, a codebook, a checklist).
 - **[writing_scientific_papers.md](writing_scientific_papers.md)** — turn your
   analysis into a paper (structure, LaTeX, citations via latexci.com).
 - **[careers_and_portfolio.md](careers_and_portfolio.md)** — where econ/finance

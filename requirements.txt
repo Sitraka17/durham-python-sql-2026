@@ -20,6 +20,7 @@ scipy==1.17.1
 # Economic data APIs
 fredapi==0.5.1
 wbdata==0.3.0
+kagglehub==1.0.2          # optional: download Kaggle datasets (see datasets/fetch_kaggle.py)
 
 # Environment
 python-dotenv==1.0.1

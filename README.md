@@ -228,7 +228,12 @@ Three guides to take what you've built further and turn it into a career asset:
 - **📊 [Data sources directory](docs/data_sources.md)** — a mapped catalogue of
   where to get real economic & financial data, with direct links: FRED, World
   Bank, IMF, OECD, BIS, Eurostat, the ONS, market data, long-run history, and
-  aggregators like DBnomics.
+  aggregators like DBnomics. Plus **Kaggle**: grab community datasets
+  reproducibly with [`datasets/fetch_kaggle.py`](datasets/fetch_kaggle.py).
+- **🎓 [Building a thesis dataset](docs/building_a_thesis_dataset.md)** — turn
+  these skills into your dissertation: choosing the unit of observation, mapping
+  Y/X/controls, merging sources safely, data-quality checks, the bias traps
+  (lookahead, survivorship, selection), a codebook, and a 12-point checklist.
 - **📝 [Writing scientific papers](docs/writing_scientific_papers.md)** — how to
   structure an empirical economics paper, write it in LaTeX, and use
   **[latexci.com](https://latexci.com/)** to auto-build citations from a
